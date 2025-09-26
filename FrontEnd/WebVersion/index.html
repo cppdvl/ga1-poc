@@ -41,66 +41,86 @@
 <body class="min-h-screen">
     <!-- Side Panel Navigation -->
     <div id="side-panel-wrapper" class="fixed left-4 top-1/2 -translate-y-1/2 z-30 opacity-0 pointer-events-none transition-opacity duration-500 flex flex-col items-start gap-3">
-        <button id="side-panel-toggle" class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-600 text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition">
-            <span class="sr-only">Toggle navigation panel</span>
+        <button id="side-panel-toggle" class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-600 text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition" aria-haspopup="true" aria-controls="side-panel">
+            <span id="side-panel-toggle-icon" aria-hidden="true"></span>
+            <span class="sr-only" data-i18n="nav.toggle">Toggle navigation panel</span>
         </button>
         <nav id="side-panel" class="w-64 bg-white/95 backdrop-blur-sm border border-gray-200 rounded-xl shadow-xl p-6 transform translate-x-0 transition-transform duration-300">
-            <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">Navigator</h2>
+            <h2 class="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4" data-i18n="nav.heading">Navigator</h2>
             <ul class="space-y-2">
                 <li>
                     <button data-nav-target="hero" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-teal-50 hover:text-teal-600 transition">
-                        Overview
+                        <span data-i18n="nav.overview">Overview</span>
                     </button>
                 </li>
                 <li>
                     <button data-nav-target="login" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-teal-50 hover:text-teal-600 transition">
-                        Secure Login
+                        <span data-i18n="nav.login">Secure Login</span>
                     </button>
                 </li>
                 <li>
                     <button data-nav-target="document-input" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-teal-50 hover:text-teal-600 transition">
-                        Document Input
+                        <span data-i18n="nav.input">Document Input</span>
                     </button>
                 </li>
                 <li>
                     <button data-nav-target="document-repository" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-teal-50 hover:text-teal-600 transition">
-                        Knowledge Base
+                        <span data-i18n="nav.repository">Knowledge Base</span>
                     </button>
                 </li>
                 <li>
                     <button data-nav-target="prompt-processing" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-teal-50 hover:text-teal-600 transition">
-                        AI Processing
+                        <span data-i18n="nav.processing">AI Processing</span>
                     </button>
                 </li>
                 <li>
                     <button data-nav-target="additional-features" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-teal-50 hover:text-teal-600 transition">
-                        Additional Features
+                        <span data-i18n="nav.features">Additional Features</span>
                     </button>
                 </li>
                 <li>
                     <button data-nav-target="footer" class="w-full text-left px-3 py-2 rounded-lg text-sm font-medium text-gray-600 hover:bg-teal-50 hover:text-teal-600 transition">
-                        Footer
+                        <span data-i18n="nav.footer">Footer</span>
                     </button>
                 </li>
             </ul>
+            <div class="mt-6 pt-6 border-t border-gray-100">
+                <p class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-3" data-i18n="nav.languages">Languages</p>
+                <div class="flex gap-2">
+                    <button data-lang="en" data-color-class="text-gray-600" class="language-button w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-semibold text-gray-600 hover:border-teal-500 transition" type="button">
+                        EN
+                    </button>
+                    <button data-lang="es" data-color-class="text-gray-600" class="language-button w-full px-3 py-2 rounded-lg border border-gray-200 text-sm font-semibold text-gray-600 hover:border-teal-500 transition" type="button">
+                        ES
+                    </button>
+                </div>
+            </div>
         </nav>
+    </div>
+    <div id="language-switcher" class="fixed right-4 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2 opacity-100 transition-opacity duration-200">
+        <button data-lang="en" data-color-class="text-gray-700" class="language-button w-12 h-12 rounded-full bg-white text-gray-700 shadow-lg border border-gray-200 font-semibold hover:border-teal-500 hover:text-teal-600 transition" type="button">
+            EN
+        </button>
+        <button data-lang="es" data-color-class="text-gray-700" class="language-button w-12 h-12 rounded-full bg-white text-gray-700 shadow-lg border border-gray-200 font-semibold hover:border-teal-500 hover:text-teal-600 transition" type="button">
+            ES
+        </button>
     </div>
     <!-- Hero Section with Animated Background -->
     <div id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/20 to-black/60" id="vanta-bg"></div>
         <div class="relative z-10 text-center px-4">
-            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg">Gestalt A1 Studio</h1>
-            <p class="text-xl md:text-2xl text-white font-medium mb-10 max-w-3xl mx-auto drop-shadow-md">
+            <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg" data-i18n="hero.title">Gestalt A1 Studio</h1>
+            <p class="text-xl md:text-2xl text-white font-medium mb-10 max-w-3xl mx-auto drop-shadow-md" data-i18n="hero.subtitle">
                 The ultimate multimodal AI assistant for document processing and knowledge extraction
             </p>
             <div class="flex gap-4 justify-center">
                 <button class="bg-white text-teal-600 hover:bg-teal-100 px-8 py-3 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl">
-                    Get Started
+                    <span data-i18n="hero.ctaStart">Get Started</span>
                 </button>
                 <button class="bg-transparent border-2 border-white hover:bg-white/10 text-white px-8 py-3 rounded-lg font-bold text-lg transition-all shadow-lg hover:shadow-xl">
-                    Learn More
+                    <span data-i18n="hero.ctaLearn">Learn More</span>
                 </button>
-</div>
+            </div>
         </div>
     </div>
 
@@ -108,39 +128,39 @@
     <div class="container mx-auto px-4 py-12 max-w-7xl">
         <!-- Login Section -->
         <div id="login" class="bg-white rounded-xl shadow-lg p-8 mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">Secure Login</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6" data-i18n="login.title">Secure Login</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <div>
                     <form class="space-y-6">
                         <div>
-                            <label class="block text-gray-700 mb-2">Email</label>
+                            <label class="block text-gray-700 mb-2" data-i18n="login.emailLabel">Email</label>
                             <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition">
                         </div>
                         <div>
-                            <label class="block text-gray-700 mb-2">Password</label>
+                            <label class="block text-gray-700 mb-2" data-i18n="login.passwordLabel">Password</label>
                             <input type="password" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition">
                         </div>
                         <button type="submit" class="w-full bg-teal-600 hover:bg-teal-700 text-white py-3 px-4 rounded-lg font-medium transition">
-                            Sign In
+                            <span data-i18n="login.submit">Sign In</span>
                         </button>
                     </form>
                 </div>
                 <div class="flex flex-col justify-center">
                     <div class="bg-gradient-to-r from-teal-500 to-fuchsia-600 p-0.5 rounded-lg">
                         <div class="bg-white p-6 rounded-lg">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-3">Role-Based Access</h3>
+                            <h3 class="text-xl font-semibold text-gray-800 mb-3" data-i18n="login.roles.title">Role-Based Access</h3>
                             <ul class="space-y-2 text-gray-600">
                                 <li class="flex items-center">
                                     <i data-feather="check" class="w-5 h-5 text-teal-500 mr-2"></i>
-                                    Admin: Full system control
+                                    <span data-i18n="login.roles.admin">Admin: Full system control</span>
                                 </li>
                                 <li class="flex items-center">
                                     <i data-feather="check" class="w-5 h-5 text-teal-500 mr-2"></i>
-                                    Editor: Document processing
+                                    <span data-i18n="login.roles.editor">Editor: Document processing</span>
                                 </li>
                                 <li class="flex items-center">
                                     <i data-feather="check" class="w-5 h-5 text-teal-500 mr-2"></i>
-                                    Viewer: Read-only access
+                                    <span data-i18n="login.roles.viewer">Viewer: Read-only access</span>
                                 </li>
                             </ul>
                         </div>
@@ -151,24 +171,24 @@
 
         <!-- Document Input Section -->
         <div id="document-input" class="bg-white rounded-xl shadow-lg p-8 mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">Document Input</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6" data-i18n="input.title">Document Input</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Drag and Drop Area -->
                 <div class="border-2 border-dashed border-gray-300 rounded-xl p-8 text-center transition hover:border-teal-500 cursor-pointer" id="dropzone">
                     <i data-feather="upload" class="w-12 h-12 text-teal-500 mx-auto mb-4"></i>
-                    <h3 class="text-xl font-semibold text-gray-700 mb-2">Drag & Drop Files</h3>
-                    <p class="text-gray-500 mb-4">Supported formats: PDF, DOCX, PPTX, TXT, MP3, MP4</p>
+                    <h3 class="text-xl font-semibold text-gray-700 mb-2" data-i18n="input.drop.title">Drag & Drop Files</h3>
+                    <p class="text-gray-500 mb-4" data-i18n="input.drop.supported">Supported formats: PDF, DOCX, PPTX, TXT, MP3, MP4</p>
                     <button class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-2 rounded-lg font-medium transition">
-                        Browse Files
+                        <span data-i18n="input.drop.button">Browse Files</span>
                     </button>
                 </div>
 
                 <!-- URI Input -->
                 <div>
                     <div class="mb-6">
-                        <label class="block text-gray-700 mb-2">Enter Document URI</label>
+                        <label class="block text-gray-700 mb-2" data-i18n="input.uri.label">Enter Document URI</label>
                         <div class="flex">
-                            <input type="text" placeholder="https://example.com/document.pdf" class="flex-grow px-4 py-3 border border-gray-300 rounded-l-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition">
+                            <input type="text" placeholder="https://example.com/document.pdf" data-i18n-placeholder="input.uri.placeholder" class="flex-grow px-4 py-3 border border-gray-300 rounded-l-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition">
                             <button class="bg-teal-600 hover:bg-teal-700 text-white px-4 py-3 rounded-r-lg transition">
                                 <i data-feather="arrow-right"></i>
                             </button>
@@ -177,7 +197,7 @@
 
                     <!-- Voice Recording -->
                     <div>
-                        <label class="block text-gray-700 mb-2">Voice Input</label>
+                        <label class="block text-gray-700 mb-2" data-i18n="input.voice.label">Voice Input</label>
                         <div class="bg-gray-100 rounded-lg p-4">
                             <div class="waveform mb-4"></div>
                             <div class="flex justify-center gap-4">
@@ -197,28 +217,28 @@
         <!-- Document Repository Section -->
         <div id="document-repository" class="bg-white rounded-xl shadow-lg p-8 mb-12">
             <div class="flex items-center justify-between flex-wrap gap-4 mb-6">
-                <h2 class="text-3xl font-bold text-gray-800">Document Repository</h2>
+                <h2 class="text-3xl font-bold text-gray-800" data-i18n="repository.title">Document Repository</h2>
                 <span class="inline-flex items-center gap-2 bg-teal-100 text-teal-700 px-4 py-2 rounded-full font-medium">
                     <i data-feather="database" class="w-4 h-4"></i>
-                    Knowledge Base
+                    <span data-i18n="repository.badge">Knowledge Base</span>
                 </span>
             </div>
-            <p class="text-gray-600 mb-8">Browse curated collections, AI-generated digests, and shared resources across your organization.</p>
+            <p class="text-gray-600 mb-8" data-i18n="repository.description">Browse curated collections, AI-generated digests, and shared resources across your organization.</p>
             <div class="grid md:grid-cols-3 gap-6">
                 <div class="border border-gray-200 rounded-xl p-6 hover:border-teal-500 transition">
                     <div class="flex items-center gap-3 mb-4">
                         <div class="bg-teal-100 p-2 rounded-lg">
                             <i data-feather="folder" class="w-5 h-5 text-teal-600"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-gray-800">Collections</h3>
+                        <h3 class="text-lg font-semibold text-gray-800" data-i18n="repository.collections.title">Collections</h3>
                     </div>
                     <ul class="space-y-2 text-gray-600">
-                        <li>Compliance & Legal</li>
-                        <li>Product Documentation</li>
-                        <li>Client Deliverables</li>
+                        <li data-i18n="repository.collections.item1">Compliance & Legal</li>
+                        <li data-i18n="repository.collections.item2">Product Documentation</li>
+                        <li data-i18n="repository.collections.item3">Client Deliverables</li>
                     </ul>
                     <button class="mt-6 text-teal-600 hover:text-teal-700 font-medium flex items-center gap-1 transition">
-                        Open <i data-feather="chevron-right" class="w-4 h-4"></i>
+                        <span data-i18n="repository.collections.cta">Open</span> <i data-feather="chevron-right" class="w-4 h-4"></i>
                     </button>
                 </div>
                 <div class="border border-gray-200 rounded-xl p-6 hover:border-teal-500 transition">
@@ -226,19 +246,19 @@
                         <div class="bg-fuchsia-100 p-2 rounded-lg">
                             <i data-feather="file-text" class="w-5 h-5 text-fuchsia-600"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-gray-800">Knowledge Cards</h3>
+                        <h3 class="text-lg font-semibold text-gray-800" data-i18n="repository.cards.title">Knowledge Cards</h3>
                     </div>
-                    <p class="text-gray-600 mb-4">Rapid summaries generated from the latest document ingestions.</p>
+                    <p class="text-gray-600 mb-4" data-i18n="repository.cards.description">Rapid summaries generated from the latest document ingestions.</p>
                     <div class="space-y-2">
-                        <div class="p-3 rounded-lg bg-gray-50 border border-gray-200">
+                        <div class="p-3 rounded-lg bg-gray-50 border border-gray-200" data-i18n="repository.cards.item1">
                             Market Trends Q4 · Updated 5m ago
                         </div>
-                        <div class="p-3 rounded-lg bg-gray-50 border border-gray-200">
+                        <div class="p-3 rounded-lg bg-gray-50 border border-gray-200" data-i18n="repository.cards.item2">
                             Policy Briefing · Updated 1h ago
                         </div>
                     </div>
                     <button class="mt-6 text-fuchsia-600 hover:text-fuchsia-700 font-medium flex items-center gap-1 transition">
-                        View All <i data-feather="chevron-right" class="w-4 h-4"></i>
+                        <span data-i18n="repository.cards.cta">View All</span> <i data-feather="chevron-right" class="w-4 h-4"></i>
                     </button>
                 </div>
                 <div class="border border-gray-200 rounded-xl p-6 hover:border-teal-500 transition">
@@ -246,16 +266,16 @@
                         <div class="bg-amber-100 p-2 rounded-lg">
                             <i data-feather="share-2" class="w-5 h-5 text-amber-500"></i>
                         </div>
-                        <h3 class="text-lg font-semibold text-gray-800">Shared with Me</h3>
+                        <h3 class="text-lg font-semibold text-gray-800" data-i18n="repository.shared.title">Shared with Me</h3>
                     </div>
-                    <p class="text-gray-600 mb-4">Collaborative spaces curated by your team.</p>
+                    <p class="text-gray-600 mb-4" data-i18n="repository.shared.description">Collaborative spaces curated by your team.</p>
                     <ul class="space-y-2 text-gray-600">
-                        <li>Design Handoff Notes</li>
-                        <li>Executive Briefings</li>
-                        <li>Customer Insights</li>
+                        <li data-i18n="repository.shared.item1">Design Handoff Notes</li>
+                        <li data-i18n="repository.shared.item2">Executive Briefings</li>
+                        <li data-i18n="repository.shared.item3">Customer Insights</li>
                     </ul>
                     <button class="mt-6 text-amber-500 hover:text-amber-600 font-medium flex items-center gap-1 transition">
-                        Collaborate <i data-feather="chevron-right" class="w-4 h-4"></i>
+                        <span data-i18n="repository.shared.cta">Collaborate</span> <i data-feather="chevron-right" class="w-4 h-4"></i>
                     </button>
                 </div>
             </div>
@@ -263,42 +283,42 @@
 
         <!-- Prompt Processing Section -->
         <div id="prompt-processing" class="bg-white rounded-xl shadow-lg p-8 mb-12">
-            <h2 class="text-3xl font-bold text-gray-800 mb-6">AI Processing</h2>
+            <h2 class="text-3xl font-bold text-gray-800 mb-6" data-i18n="processing.title">AI Processing</h2>
             <div class="grid md:grid-cols-2 gap-8">
                 <!-- Prompt Editor -->
                 <div>
                     <div class="mb-4">
-                        <label class="block text-gray-700 mb-2">Write Your Prompt</label>
+                        <label class="block text-gray-700 mb-2" data-i18n="processing.promptLabel">Write Your Prompt</label>
                         <div class="syntax-highlight p-4 rounded-lg border border-gray-200">
-                            <textarea class="w-full h-64 outline-none resize-none bg-transparent" placeholder="Ask the AI to analyze, summarize, or extract information from your documents..."></textarea>
+                            <textarea class="w-full h-64 outline-none resize-none bg-transparent" placeholder="Ask the AI to analyze, summarize, or extract information from your documents..." data-i18n-placeholder="processing.promptPlaceholder"></textarea>
                         </div>
                     </div>
                     <button class="bg-teal-600 hover:bg-teal-700 text-white px-6 py-3 rounded-lg font-medium transition flex items-center gap-2">
                         <i data-feather="send"></i>
-                        Process Documents
+                        <span data-i18n="processing.processButton">Process Documents</span>
                     </button>
                 </div>
 
                 <!-- Response Area -->
                 <div>
                     <div class="flex items-center justify-between mb-4">
-                        <label class="block text-gray-700">AI Response</label>
+                        <label class="block text-gray-700" data-i18n="processing.responseLabel">AI Response</label>
                         <div class="flex items-center gap-2 text-sm text-gray-500">
                             <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
-                            <span>AI Ready</span>
+                            <span data-i18n="processing.statusReady">AI Ready</span>
                         </div>
                     </div>
                     <div class="bg-gray-50 border border-gray-200 rounded-lg p-4 h-64 overflow-y-auto">
-                        <div class="text-gray-500 italic">Response will appear here...</div>
+                        <div class="text-gray-500 italic" data-i18n="processing.responsePlaceholder">Response will appear here...</div>
                     </div>
                     <div class="mt-4 flex gap-2">
                         <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm transition flex items-center gap-1">
                             <i data-feather="copy" class="w-4 h-4"></i>
-                            Copy
+                            <span data-i18n="processing.copy">Copy</span>
                         </button>
                         <button class="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg text-sm transition flex items-center gap-1">
                             <i data-feather="download" class="w-4 h-4"></i>
-                            Export
+                            <span data-i18n="processing.export">Export</span>
                         </button>
                     </div>
                 </div>
@@ -306,21 +326,21 @@
 
             <!-- History Section -->
             <div class="mt-12">
-                <h3 class="text-xl font-semibold text-gray-700 mb-4">Processing History</h3>
+                <h3 class="text-xl font-semibold text-gray-700 mb-4" data-i18n="processing.history.title">Processing History</h3>
                 <div class="space-y-2">
                     <div class="history-item p-4 border border-gray-200 rounded-lg cursor-pointer transition">
                         <div class="flex justify-between items-center">
-                            <div class="font-medium">Summarize Q3 financial report</div>
-                            <div class="text-sm text-gray-500">2 minutes ago</div>
+                            <div class="font-medium" data-i18n="processing.history.item1.title">Summarize Q3 financial report</div>
+                            <div class="text-sm text-gray-500" data-i18n="processing.history.item1.time">2 minutes ago</div>
                         </div>
-                        <div class="text-sm text-gray-600 mt-1 line-clamp-1">The financial report shows a 15% increase in revenue compared to last quarter...</div>
+                        <div class="text-sm text-gray-600 mt-1 line-clamp-1" data-i18n="processing.history.item1.preview">The financial report shows a 15% increase in revenue compared to last quarter...</div>
                     </div>
                     <div class="history-item p-4 border border-gray-200 rounded-lg cursor-pointer transition">
                         <div class="flex justify-between items-center">
-                            <div class="font-medium">Extract key points from meeting</div>
-                            <div class="text-sm text-gray-500">1 hour ago</div>
+                            <div class="font-medium" data-i18n="processing.history.item2.title">Extract key points from meeting</div>
+                            <div class="text-sm text-gray-500" data-i18n="processing.history.item2.time">1 hour ago</div>
                         </div>
-                        <div class="text-sm text-gray-600 mt-1 line-clamp-1">1. New product launch scheduled for Q2 2024. 2. Marketing budget increased by 20%...</div>
+                        <div class="text-sm text-gray-600 mt-1 line-clamp-1" data-i18n="processing.history.item2.preview">1. New product launch scheduled for Q2 2024. 2. Marketing budget increased by 20%...</div>
                     </div>
                 </div>
             </div>
@@ -334,11 +354,11 @@
                     <div class="bg-teal-100 p-2 rounded-lg">
                         <i data-feather="settings" class="w-5 h-5 text-teal-600"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800">Settings</h3>
+                    <h3 class="text-lg font-semibold text-gray-800" data-i18n="features.settings.title">Settings</h3>
                 </div>
-                <p class="text-gray-600 mb-4">Customize your preferences and configure system settings.</p>
+                <p class="text-gray-600 mb-4" data-i18n="features.settings.description">Customize your preferences and configure system settings.</p>
                 <button class="text-teal-600 hover:text-teal-700 font-medium flex items-center gap-1 transition">
-                    Configure <i data-feather="chevron-right" class="w-4 h-4"></i>
+                    <span data-i18n="features.settings.cta">Configure</span> <i data-feather="chevron-right" class="w-4 h-4"></i>
                 </button>
             </div>
 
@@ -348,11 +368,11 @@
                     <div class="bg-fuchsia-100 p-2 rounded-lg">
                         <i data-feather="book" class="w-5 h-5 text-fuchsia-600"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800">Information Hub</h3>
+                    <h3 class="text-lg font-semibold text-gray-800" data-i18n="features.info.title">Information Hub</h3>
                 </div>
-                <p class="text-gray-600 mb-4">Access tutorials, documentation, and latest updates.</p>
+                <p class="text-gray-600 mb-4" data-i18n="features.info.description">Access tutorials, documentation, and latest updates.</p>
                 <button class="text-fuchsia-600 hover:text-fuchsia-700 font-medium flex items-center gap-1 transition">
-                    Explore <i data-feather="chevron-right" class="w-4 h-4"></i>
+                    <span data-i18n="features.info.cta">Explore</span> <i data-feather="chevron-right" class="w-4 h-4"></i>
                 </button>
             </div>
 
@@ -362,11 +382,11 @@
                     <div class="bg-teal-100 p-2 rounded-lg">
                         <i data-feather="clock" class="w-5 h-5 text-teal-600"></i>
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800">Sessions</h3>
+                    <h3 class="text-lg font-semibold text-gray-800" data-i18n="features.sessions.title">Sessions</h3>
                 </div>
-                <p class="text-gray-600 mb-4">Manage active sessions and review processing history.</p>
+                <p class="text-gray-600 mb-4" data-i18n="features.sessions.description">Manage active sessions and review processing history.</p>
                 <button class="text-teal-600 hover:text-teal-700 font-medium flex items-center gap-1 transition">
-                    View <i data-feather="chevron-right" class="w-4 h-4"></i>
+                    <span data-i18n="features.sessions.cta">View</span> <i data-feather="chevron-right" class="w-4 h-4"></i>
                 </button>
             </div>
         </div>
@@ -377,36 +397,36 @@
         <div class="container mx-auto px-4 max-w-7xl">
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
-                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Gestalt A1</h3>
-                    <p class="text-gray-600">Empowering organizations with intelligent document processing through multimodal AI.</p>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4" data-i18n="footer.brand">Gestalt A1</h3>
+                    <p class="text-gray-600" data-i18n="footer.description">Empowering organizations with intelligent document processing through multimodal AI.</p>
                 </div>
                 <div>
-                    <h4 class="font-medium text-gray-800 mb-4">Product</h4>
+                    <h4 class="font-medium text-gray-800 mb-4" data-i18n="footer.product">Product</h4>
                     <ul class="space-y-2 text-gray-600">
-                        <li><a href="#" class="hover:text-teal-600 transition">Features</a></li>
-                        <li><a href="#" class="hover:text-teal-600 transition">Pricing</a></li>
-                        <li><a href="#" class="hover:text-teal-600 transition">API</a></li>
+                        <li><a href="#" class="hover:text-teal-600 transition" data-i18n="footer.links.features">Features</a></li>
+                        <li><a href="#" class="hover:text-teal-600 transition" data-i18n="footer.links.pricing">Pricing</a></li>
+                        <li><a href="#" class="hover:text-teal-600 transition" data-i18n="footer.links.api">API</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-medium text-gray-800 mb-4">Resources</h4>
+                    <h4 class="font-medium text-gray-800 mb-4" data-i18n="footer.resources">Resources</h4>
                     <ul class="space-y-2 text-gray-600">
-                        <li><a href="#" class="hover:text-teal-600 transition">Documentation</a></li>
-                        <li><a href="#" class="hover:text-teal-600 transition">Blog</a></li>
-                        <li><a href="#" class="hover:text-teal-600 transition">Support</a></li>
+                        <li><a href="#" class="hover:text-teal-600 transition" data-i18n="footer.links.documentation">Documentation</a></li>
+                        <li><a href="#" class="hover:text-teal-600 transition" data-i18n="footer.links.blog">Blog</a></li>
+                        <li><a href="#" class="hover:text-teal-600 transition" data-i18n="footer.links.support">Support</a></li>
                     </ul>
                 </div>
                 <div>
-                    <h4 class="font-medium text-gray-800 mb-4">Company</h4>
+                    <h4 class="font-medium text-gray-800 mb-4" data-i18n="footer.company">Company</h4>
                     <ul class="space-y-2 text-gray-600">
-                        <li><a href="#" class="hover:text-teal-600 transition">About</a></li>
-                        <li><a href="#" class="hover:text-teal-600 transition">Careers</a></li>
-                        <li><a href="#" class="hover:text-teal-600 transition">Contact</a></li>
+                        <li><a href="#" class="hover:text-teal-600 transition" data-i18n="footer.links.about">About</a></li>
+                        <li><a href="#" class="hover:text-teal-600 transition" data-i18n="footer.links.careers">Careers</a></li>
+                        <li><a href="#" class="hover:text-teal-600 transition" data-i18n="footer.links.contact">Contact</a></li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-                <p class="text-gray-500 mb-4 md:mb-0">© 2023 Gestalt A1 Studio. All rights reserved.</p>
+                <p class="text-gray-500 mb-4 md:mb-0" data-i18n="footer.copyright">© 2023 Gestalt A1 Studio. All rights reserved.</p>
                 <div class="flex gap-4">
                     <a href="#" class="text-gray-500 hover:text-teal-600 transition">
                         <i data-feather="twitter"></i>
@@ -459,12 +479,21 @@
             });
         }
 
-        // Foldable side panel behavior
+        // Foldable side panel behavior and language controls
         const sidePanelWrapper = document.getElementById('side-panel-wrapper');
         const sidePanel = document.getElementById('side-panel');
         const sidePanelToggle = document.getElementById('side-panel-toggle');
+        const sidePanelToggleIcon = document.getElementById('side-panel-toggle-icon');
         const heroSection = document.getElementById('hero');
+        const languageSwitcher = document.getElementById('language-switcher');
+        const languageButtons = document.querySelectorAll('.language-button');
+        const LANGUAGE_STORAGE_KEY = 'gestalt-language';
+        const defaultLanguage = 'en';
+        const storedLanguage = localStorage.getItem(LANGUAGE_STORAGE_KEY);
+        let activeLanguage = storedLanguage || defaultLanguage;
         let panelOpen = true;
+        let panelOpacity = 0;
+        let floatingLanguageVisible = true;
 
         const setPanelOpen = (isOpen) => {
             panelOpen = isOpen;
@@ -475,11 +504,27 @@
                 sidePanel.classList.toggle('pointer-events-none', !panelOpen);
             }
 
-            if (sidePanelToggle && typeof feather !== 'undefined') {
+            if (sidePanelToggle) {
                 sidePanelToggle.setAttribute('aria-expanded', String(panelOpen));
+            }
+
+            if (sidePanelToggleIcon && typeof feather !== 'undefined') {
                 const iconName = panelOpen ? 'chevron-left' : 'chevron-right';
-                const iconSvg = feather.icons[iconName]?.toSvg({ class: 'w-5 h-5' }) ?? '';
-                sidePanelToggle.innerHTML = `${iconSvg}<span class="sr-only">Toggle navigation panel</span>`;
+                sidePanelToggleIcon.innerHTML = feather.icons[iconName]?.toSvg({ class: 'w-5 h-5' }) ?? '';
+            }
+        };
+
+        const updateFloatingLanguageVisibility = (opacity) => {
+            if (!languageSwitcher) {
+                return;
+            }
+
+            if (opacity > 0.5 && floatingLanguageVisible) {
+                languageSwitcher.classList.add('opacity-0', 'pointer-events-none');
+                floatingLanguageVisible = false;
+            } else if (opacity < 0.4 && !floatingLanguageVisible) {
+                languageSwitcher.classList.remove('opacity-0', 'pointer-events-none');
+                floatingLanguageVisible = true;
             }
         };
 
@@ -494,15 +539,112 @@
                     if (entry.isIntersecting) {
                         sidePanelWrapper.classList.add('opacity-0', 'pointer-events-none');
                         sidePanelWrapper.classList.remove('opacity-100', 'pointer-events-auto');
+                        panelOpacity = 0;
                     } else {
                         sidePanelWrapper.classList.remove('opacity-0', 'pointer-events-none');
                         sidePanelWrapper.classList.add('opacity-100', 'pointer-events-auto');
+                        panelOpacity = 1;
                     }
+
+                    updateFloatingLanguageVisibility(panelOpacity);
                 });
             }, { threshold: 0.1 });
 
             observer.observe(heroSection);
+        } else {
+            updateFloatingLanguageVisibility(panelOpacity);
         }
+
+        const applyTranslations = (dictionary, language) => {
+            const entries = dictionary[language] ?? {};
+
+            document.querySelectorAll('[data-i18n]').forEach((element) => {
+                const key = element.getAttribute('data-i18n');
+                const value = entries[key];
+                if (typeof value === 'string') {
+                    element.textContent = value;
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-placeholder]').forEach((element) => {
+                const key = element.getAttribute('data-i18n-placeholder');
+                const value = entries[key];
+                if (typeof value === 'string') {
+                    element.setAttribute('placeholder', value);
+                }
+            });
+
+            document.querySelectorAll('[data-i18n-html]').forEach((element) => {
+                const key = element.getAttribute('data-i18n-html');
+                const value = entries[key];
+                if (typeof value === 'string') {
+                    element.innerHTML = value;
+                }
+            });
+        };
+
+        const markActiveLanguageButtons = (language) => {
+            languageButtons.forEach((button) => {
+                const isActive = button.getAttribute('data-lang') === language;
+                const defaultColorClass = button.getAttribute('data-color-class');
+                const hasNeutralBackground = button.classList.contains('bg-white');
+                const hasBorderGray = button.classList.contains('border-gray-200');
+
+                button.classList.toggle('bg-teal-600', isActive);
+                if (hasNeutralBackground) {
+                    button.classList.toggle('bg-white', !isActive);
+                }
+
+                button.classList.toggle('text-white', isActive);
+                if (defaultColorClass) {
+                    button.classList.toggle(defaultColorClass, !isActive);
+                }
+
+                button.classList.toggle('border-transparent', isActive);
+                if (hasBorderGray) {
+                    button.classList.toggle('border-gray-200', !isActive);
+                }
+
+                button.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+            });
+        };
+
+        markActiveLanguageButtons(activeLanguage);
+
+        languageButtons.forEach((button) => {
+            button.addEventListener('click', () => {
+                const selectedLang = button.getAttribute('data-lang');
+                if (!selectedLang) {
+                    return;
+                }
+
+                localStorage.setItem(LANGUAGE_STORAGE_KEY, selectedLang);
+                window.location.reload();
+            });
+        });
+
+        const loadTranslations = async () => {
+            try {
+                const response = await fetch('locales.json', { cache: 'no-cache' });
+                if (!response.ok) {
+                    throw new Error(`Failed to load locales: ${response.status}`);
+                }
+
+                const dictionary = await response.json();
+
+                if (!dictionary[activeLanguage]) {
+                    activeLanguage = defaultLanguage;
+                    localStorage.setItem(LANGUAGE_STORAGE_KEY, activeLanguage);
+                }
+
+                applyTranslations(dictionary, activeLanguage);
+                markActiveLanguageButtons(activeLanguage);
+            } catch (error) {
+                console.error('Localization error:', error);
+            }
+        };
+
+        loadTranslations();
 
         document.querySelectorAll('[data-nav-target]').forEach((button) => {
             button.addEventListener('click', () => {

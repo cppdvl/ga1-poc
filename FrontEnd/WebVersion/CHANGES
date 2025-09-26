@@ -1,3 +1,8 @@
+Version 0.2.0 - 2025-09-26
+- Added bilingual localization with English and Spanish copy surfaced via data tags.
+- Introduced floating language toggles with fade interactions tied to the navigation panel.
+- Persisted language preference and integrated switcher controls into the side panel layout.
+
 Version 0.1.0 - 2025-09-26
 - Initial Gestalt A1 Studio landing experience with hero, login, and AI workflow sections.
 - Added Knowledge Base repository showcase highlighting collections and summaries.
