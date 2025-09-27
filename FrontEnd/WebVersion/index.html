@@ -494,6 +494,9 @@
         let panelOpen = true;
         let panelOpacity = 0;
         let floatingLanguageVisible = true;
+        let translationsDictionary = null;
+        let pendingLanguage = activeLanguage;
+        let translationsLoadPromise = null;
 
         const setPanelOpen = (isOpen) => {
             panelOpen = isOpen;
@@ -609,41 +612,100 @@
             });
         };
 
-        markActiveLanguageButtons(activeLanguage);
+        const persistLanguageChoice = (language) => {
+            try {
+                localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
+            } catch (storageError) {
+                console.error('Localization persistence error:', storageError);
+            }
+        };
+
+        const renderActiveLanguage = ({ persistFallback = false } = {}) => {
+            if (!translationsDictionary) {
+                markActiveLanguageButtons(activeLanguage);
+                return;
+            }
+
+            if (!translationsDictionary[activeLanguage]) {
+                activeLanguage = defaultLanguage;
+                pendingLanguage = activeLanguage;
+
+                if (persistFallback) {
+                    persistLanguageChoice(activeLanguage);
+                }
+            }
+
+            applyTranslations(translationsDictionary, activeLanguage);
+            markActiveLanguageButtons(activeLanguage);
+        };
+
+        const setActiveLanguage = (language, { persist = true } = {}) => {
+            if (!language) {
+                return;
+            }
+
+            activeLanguage = language;
+            pendingLanguage = language;
+
+            if (persist) {
+                persistLanguageChoice(activeLanguage);
+            }
+
+            if (!translationsDictionary) {
+                loadTranslations();
+                markActiveLanguageButtons(activeLanguage);
+                return;
+            }
+
+            renderActiveLanguage({ persistFallback: persist });
+        };
 
         languageButtons.forEach((button) => {
             button.addEventListener('click', () => {
                 const selectedLang = button.getAttribute('data-lang');
-                if (!selectedLang) {
+                if (!selectedLang || selectedLang === activeLanguage) {
                     return;
                 }
 
-                localStorage.setItem(LANGUAGE_STORAGE_KEY, selectedLang);
-                window.location.reload();
+                setActiveLanguage(selectedLang);
             });
         });
 
-        const loadTranslations = async () => {
-            try {
-                const response = await fetch('locales.json', { cache: 'no-cache' });
-                if (!response.ok) {
-                    throw new Error(`Failed to load locales: ${response.status}`);
-                }
-
-                const dictionary = await response.json();
-
-                if (!dictionary[activeLanguage]) {
-                    activeLanguage = defaultLanguage;
-                    localStorage.setItem(LANGUAGE_STORAGE_KEY, activeLanguage);
-                }
-
-                applyTranslations(dictionary, activeLanguage);
-                markActiveLanguageButtons(activeLanguage);
-            } catch (error) {
-                console.error('Localization error:', error);
+        const loadTranslations = () => {
+            if (translationsLoadPromise) {
+                return translationsLoadPromise;
             }
+
+            translationsLoadPromise = fetch('locales.json', { cache: 'no-cache' })
+                .then((response) => {
+                    if (!response.ok) {
+                        throw new Error(`Failed to load locales: ${response.status}`);
+                    }
+
+                    return response.json();
+                })
+                .then((dictionary) => {
+                    translationsDictionary = dictionary;
+
+                    if (!translationsDictionary[pendingLanguage]) {
+                        pendingLanguage = defaultLanguage;
+                    }
+
+                    setActiveLanguage(pendingLanguage, { persist: false });
+                })
+                .catch((error) => {
+                    translationsLoadPromise = null;
+                    console.error('Localization error:', error);
+
+                    if (window.location.protocol === 'file:') {
+                        console.warn('Serve the app over http:// or https:// so locales.json can be fetched.');
+                    }
+                });
+
+            return translationsLoadPromise;
         };
 
+        renderActiveLanguage();
         loadTranslations();
 
         document.querySelectorAll('[data-nav-target]').forEach((button) => {
