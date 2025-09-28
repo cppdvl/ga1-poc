@@ -1,3 +1,7 @@
+Version 0.2.2 - 2025-09-28
+- Added a floating top navigation bar with anchored Home, Pricing, FAQ, and Changelog links.
+- Expanded the landing experience with pricing, FAQ, and changelog sections populated with localized copy.
+
 Version 0.2.1 - 2025-09-26
 - Enabled in-place language toggling by caching locales.json and re-rendering UI text without reloading the page.
 

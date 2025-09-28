@@ -39,6 +39,15 @@
     </style>
 </head>
 <body class="min-h-screen">
+    <!-- Floating Top Navigation -->
+    <header class="fixed top-6 left-1/2 z-40 -translate-x-1/2">
+        <nav class="flex items-center gap-6 md:gap-10 px-6 md:px-10 py-3 bg-white/80 backdrop-blur-md text-gray-700 font-semibold rounded-full shadow-lg">
+            <a href="#hero" class="hover:text-teal-600 transition" data-i18n="topnav.home">Home</a>
+            <a href="#pricing" class="hover:text-teal-600 transition" data-i18n="topnav.pricing">Pricing</a>
+            <a href="#faq" class="hover:text-teal-600 transition" data-i18n="topnav.faq">FAQ</a>
+            <a href="#changelog" class="hover:text-teal-600 transition" data-i18n="topnav.changelog">Changelog</a>
+        </nav>
+    </header>
     <!-- Side Panel Navigation -->
     <div id="side-panel-wrapper" class="fixed left-4 top-1/2 -translate-y-1/2 z-30 opacity-0 pointer-events-none transition-opacity duration-500 flex flex-col items-start gap-3">
         <button id="side-panel-toggle" class="flex items-center justify-center w-12 h-12 rounded-full bg-teal-600 text-white shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500 transition" aria-haspopup="true" aria-controls="side-panel">
@@ -106,7 +115,7 @@
         </button>
     </div>
     <!-- Hero Section with Animated Background -->
-    <div id="hero" class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div id="hero" class="relative h-screen flex items-center justify-center overflow-hidden scroll-mt-32">
         <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/20 to-black/60" id="vanta-bg"></div>
         <div class="relative z-10 text-center px-4">
             <h1 class="text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-lg" data-i18n="hero.title">Gestalt A1 Studio</h1>
@@ -126,6 +135,115 @@
 
     <!-- Main Application Container -->
     <div class="container mx-auto px-4 py-12 max-w-7xl">
+        <!-- Pricing Section -->
+        <div id="pricing" class="bg-white rounded-xl shadow-lg p-8 mb-12 scroll-mt-32">
+            <div class="max-w-3xl mx-auto text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4" data-i18n="pricing.title">Pricing Plans</h2>
+                <p class="text-gray-600" data-i18n="pricing.subtitle">Choose the coverage that matches your team's workflow.</p>
+            </div>
+            <div class="grid gap-8 md:grid-cols-3">
+                <div class="border border-gray-200 rounded-xl p-6 flex flex-col">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2" data-i18n="pricing.starter.title">Starter</h3>
+                    <p class="text-3xl font-bold text-teal-600 mb-4" data-i18n="pricing.starter.price">$29/mo</p>
+                    <ul class="space-y-2 text-gray-600 mb-6">
+                        <li class="flex items-start gap-2" data-i18n="pricing.starter.feature1">Up to 3 active workspaces</li>
+                        <li class="flex items-start gap-2" data-i18n="pricing.starter.feature2">Document uploads up to 200 MB</li>
+                        <li class="flex items-start gap-2" data-i18n="pricing.starter.feature3">Email support during business hours</li>
+                    </ul>
+                    <button class="mt-auto bg-teal-50 text-teal-600 hover:bg-teal-100 px-4 py-2 rounded-lg font-medium transition" type="button" data-i18n="pricing.cta">Start Trial</button>
+                </div>
+                <div class="border-2 border-teal-500 rounded-xl p-6 flex flex-col shadow-md">
+                    <span class="inline-flex self-start px-3 py-1 text-xs font-semibold uppercase tracking-wide bg-teal-100 text-teal-700 rounded-full mb-3" data-i18n="pricing.growth.badge">Popular</span>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2" data-i18n="pricing.growth.title">Growth</h3>
+                    <p class="text-3xl font-bold text-teal-600 mb-4" data-i18n="pricing.growth.price">$79/mo</p>
+                    <ul class="space-y-2 text-gray-600 mb-6">
+                        <li class="flex items-start gap-2" data-i18n="pricing.growth.feature1">Unlimited processed documents</li>
+                        <li class="flex items-start gap-2" data-i18n="pricing.growth.feature2">Team-based knowledge repositories</li>
+                        <li class="flex items-start gap-2" data-i18n="pricing.growth.feature3">Priority chat and email support</li>
+                    </ul>
+                    <button class="mt-auto bg-teal-600 text-white hover:bg-teal-700 px-4 py-2 rounded-lg font-medium transition" type="button" data-i18n="pricing.cta">Start Trial</button>
+                </div>
+                <div class="border border-gray-200 rounded-xl p-6 flex flex-col">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-2" data-i18n="pricing.enterprise.title">Enterprise</h3>
+                    <p class="text-3xl font-bold text-teal-600 mb-4" data-i18n="pricing.enterprise.price">Custom</p>
+                    <ul class="space-y-2 text-gray-600 mb-6">
+                        <li class="flex items-start gap-2" data-i18n="pricing.enterprise.feature1">Dedicated environments and SLAs</li>
+                        <li class="flex items-start gap-2" data-i18n="pricing.enterprise.feature2">On-prem &amp; hybrid deployment options</li>
+                        <li class="flex items-start gap-2" data-i18n="pricing.enterprise.feature3">Guided onboarding and training</li>
+                    </ul>
+                    <button class="mt-auto bg-teal-50 text-teal-600 hover:bg-teal-100 px-4 py-2 rounded-lg font-medium transition" type="button" data-i18n="pricing.enterprise.cta">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div id="faq" class="bg-white rounded-xl shadow-lg p-8 mb-12 scroll-mt-32">
+            <div class="max-w-3xl mx-auto text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4" data-i18n="faq.title">Frequently Asked Questions</h2>
+                <p class="text-gray-600" data-i18n="faq.subtitle">Find quick answers to the topics customers ask about most.</p>
+            </div>
+            <div class="grid gap-6 md:grid-cols-2">
+                <div class="bg-slate-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2" data-i18n="faq.q1.question">What is Gestalt A1 Studio?</h3>
+                    <p class="text-gray-600" data-i18n="faq.q1.answer">It is a multimodal AI workspace that centralizes document intake, understanding, and collaboration.</p>
+                </div>
+                <div class="bg-slate-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2" data-i18n="faq.q2.question">How secure is the platform?</h3>
+                    <p class="text-gray-600" data-i18n="faq.q2.answer">Role-based access controls, auditing, and encrypted storage keep sensitive records protected.</p>
+                </div>
+                <div class="bg-slate-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2" data-i18n="faq.q3.question">Can we bring our own models?</h3>
+                    <p class="text-gray-600" data-i18n="faq.q3.answer">Enterprise plans let you integrate private LLMs and bespoke cognitive services.</p>
+                </div>
+                <div class="bg-slate-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2" data-i18n="faq.q4.question">Do you support compliance workflows?</h3>
+                    <p class="text-gray-600" data-i18n="faq.q4.answer">Compliance templates, automated retention rules, and exportable audit trails are built in.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Changelog Section -->
+        <div id="changelog" class="bg-white rounded-xl shadow-lg p-8 mb-12 scroll-mt-32">
+            <div class="max-w-3xl mx-auto text-center mb-8">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4" data-i18n="changelog.title">Changelog</h2>
+                <p class="text-gray-600" data-i18n="changelog.subtitle">Highlights from the latest Gestalt A1 Studio releases.</p>
+            </div>
+            <div class="space-y-8">
+                <div>
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+                        <h3 class="text-2xl font-semibold text-gray-800" data-i18n="changelog.version021.title">Version 0.2.1</h3>
+                        <span class="text-sm text-gray-500" data-i18n="changelog.version021.date">September 26, 2025</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li data-i18n="changelog.version021.note1">In-place language toggling keeps the UI responsive while switching locales.</li>
+                        <li data-i18n="changelog.version021.note2">Caching improvements reduce repeat locale lookups during long sessions.</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+                        <h3 class="text-2xl font-semibold text-gray-800" data-i18n="changelog.version020.title">Version 0.2.0</h3>
+                        <span class="text-sm text-gray-500" data-i18n="changelog.version020.date">September 26, 2025</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li data-i18n="changelog.version020.note1">Bilingual localization landed for English and Spanish audiences.</li>
+                        <li data-i18n="changelog.version020.note2">Language switchers gained floating affordances tied to the side panel.</li>
+                        <li data-i18n="changelog.version020.note3">User preferences now persist so copy stays consistent between visits.</li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-3">
+                        <h3 class="text-2xl font-semibold text-gray-800" data-i18n="changelog.version010.title">Version 0.1.0</h3>
+                        <span class="text-sm text-gray-500" data-i18n="changelog.version010.date">September 26, 2025</span>
+                    </div>
+                    <ul class="list-disc list-inside text-gray-600 space-y-2">
+                        <li data-i18n="changelog.version010.note1">Debut landing experience outlined the AI workflow end-to-end.</li>
+                        <li data-i18n="changelog.version010.note2">Knowledge Base spotlight showcased curated collections and summaries.</li>
+                        <li data-i18n="changelog.version010.note3">Scroll-aware navigation delivered smooth jumps across primary sections.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <!-- Login Section -->
         <div id="login" class="bg-white rounded-xl shadow-lg p-8 mb-12">
             <h2 class="text-3xl font-bold text-gray-800 mb-6" data-i18n="login.title">Secure Login</h2>
