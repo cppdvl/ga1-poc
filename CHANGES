@@ -1,3 +1,6 @@
+Version 0.2.3 - 2025-09-28
+- Restyled the floating navigation bar with an acrylic, semi-transparent background treatment.
+
 Version 0.2.2 - 2025-09-28
 - Added a floating top navigation bar with anchored Home, Pricing, FAQ, and Changelog links.
 - Expanded the landing experience with pricing, FAQ, and changelog sections populated with localized copy.
