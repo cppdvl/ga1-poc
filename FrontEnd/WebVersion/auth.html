@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestalt A1 Secure Login</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a;
+        }
+
+        .language-button-active {
+            background-color: #0d9488;
+            border-color: transparent !important;
+            color: #ffffff !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-slate-900 text-white">
+    <div class="absolute inset-x-0 top-0 z-10 flex justify-end gap-2 p-6">
+        <div class="flex items-center gap-2 rounded-full border border-slate-700 bg-slate-800/70 px-2 py-1">
+            <button data-lang="en" class="language-button h-9 w-9 rounded-full text-xs font-semibold text-slate-200 transition hover:text-teal-300" type="button">EN</button>
+            <button data-lang="es" class="language-button h-9 w-9 rounded-full text-xs font-semibold text-slate-200 transition hover:text-teal-300" type="button">ES</button>
+        </div>
+        <a href="index.html" class="inline-flex items-center gap-2 rounded-full border border-slate-700 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-teal-400 hover:text-teal-200">
+            <i data-feather="arrow-left"></i>
+            <span data-i18n="topnav.home">Home</span>
+        </a>
+    </div>
+
+    <div class="flex min-h-screen flex-col lg:flex-row">
+        <section class="flex flex-1 items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 px-8 py-16">
+            <div class="max-w-lg">
+                <span class="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-teal-200" data-i18n="landing.hero.kicker">Multimodal Intelligence</span>
+                <h1 class="mt-6 text-4xl font-bold text-white sm:text-5xl" data-i18n="hero.title">Gestalt A1 Studio</h1>
+                <p class="mt-4 text-lg text-slate-200" data-i18n="hero.subtitle">
+                    The ultimate multimodal AI assistant for document processing and knowledge extraction
+                </p>
+                <div class="mt-8 space-y-4 text-slate-300">
+                    <div class="flex items-start gap-3">
+                        <i data-feather="lock" class="mt-1 h-5 w-5 text-teal-300"></i>
+                        <p data-i18n="login.roles.admin">Admin: Full system control</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i data-feather="sliders" class="mt-1 h-5 w-5 text-teal-300"></i>
+                        <p data-i18n="login.roles.editor">Editor: Document processing</p>
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <i data-feather="eye" class="mt-1 h-5 w-5 text-teal-300"></i>
+                        <p data-i18n="login.roles.viewer">Viewer: Read-only access</p>
+                    </div>
+                </div>
+                <div class="mt-12 grid gap-4 sm:grid-cols-2">
+                    <a href="workspace.html" class="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-700 px-4 py-3 text-sm font-semibold text-slate-200 transition hover:border-teal-400 hover:text-teal-200">
+                        <i data-feather="compass"></i>
+                        <span data-i18n="landing.cta.workspace">Explore Workspace</span>
+                    </a>
+                    <a href="#login-form" class="inline-flex items-center justify-center gap-2 rounded-xl bg-teal-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-teal-500">
+                        <i data-feather="log-in"></i>
+                        <span data-i18n="hero.ctaStart">Get Started</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="flex flex-1 items-center justify-center bg-white px-6 py-16 text-slate-900">
+            <div class="w-full max-w-md rounded-3xl border border-slate-200 bg-white p-8 shadow-xl">
+                <div class="mb-8 text-center">
+                    <p class="text-xs font-semibold uppercase tracking-[0.35em] text-teal-500" data-i18n="landing.hero.kicker">Multimodal Intelligence</p>
+                    <h2 class="mt-2 text-3xl font-bold text-slate-900" data-i18n="login.title">Secure Login</h2>
+                    <p class="mt-2 text-sm text-slate-500" data-i18n="landing.platform.subtitle">
+                        Capture, understand, and share institutional knowledge with a single multimodal platform that adapts to your organization.
+                    </p>
+                </div>
+                <form id="login-form" class="space-y-6">
+                    <div>
+                        <label class="mb-2 block text-sm font-medium text-slate-700" for="email" data-i18n="login.emailLabel">Email</label>
+                        <input id="email" type="email" class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-700 outline-none focus:ring-2 focus:ring-teal-500" placeholder="you@example.com">
+                    </div>
+                    <div>
+                        <div class="mb-2 flex items-center justify-between">
+                            <label class="text-sm font-medium text-slate-700" for="password" data-i18n="login.passwordLabel">Password</label>
+                            <a href="#" class="text-xs font-semibold text-teal-600 transition hover:text-teal-700" data-i18n="auth.forgotPassword">Forgot password?</a>
+                        </div>
+                        <input id="password" type="password" class="w-full rounded-lg border border-slate-300 px-4 py-3 text-slate-700 outline-none focus:ring-2 focus:ring-teal-500">
+                    </div>
+                    <button type="submit" class="w-full rounded-lg bg-teal-600 px-4 py-3 text-sm font-semibold text-white transition hover:bg-teal-700">
+                        <span data-i18n="login.submit">Sign In</span>
+                    </button>
+                </form>
+                <div class="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-6">
+                    <h3 class="text-sm font-semibold text-slate-800 mb-3" data-i18n="landing.platform.capture.title">All your inputs, any format</h3>
+                    <p class="text-sm text-slate-600" data-i18n="landing.platform.capture.description">
+                        Drag in files, stream voice notes, or reference knowledge via secure links. Gestalt normalizes documents so downstream AI stays accurate.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script src="assets/js/localization.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof feather !== 'undefined') {
+                feather.replace();
+            }
+            if (window.GestaltLocalization && typeof window.GestaltLocalization.initLocalization === 'function') {
+                window.GestaltLocalization.initLocalization();
+            }
+        });
+    </script>
+</body>
+</html>
